@@ -185,7 +185,6 @@ input[type="password"] {
     margin-bottom: 30px;
 }
 
-/* بوكسات الرسائل البيضاء الموزعة لإطالة الصفحة */
 .story-box {
     background: #ffffff;
     color: #444;
@@ -199,7 +198,6 @@ input[type="password"] {
     font-size: 1.05rem;
 }
 
-/* قائمة الصور الطويلة بالخدش */
 .memories-long-list {
     display: flex;
     flex-direction: column;
@@ -273,7 +271,6 @@ input[type="password"] {
     font-style: italic;
 }
 
-/* لعبة المتاهة */
 .game-section {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 20px;
@@ -329,7 +326,6 @@ input[type="password"] {
     margin-top: 12px;
 }
 
-/* قسم الأهداف والتشيك ليست */
 .goals-card {
     background: #ffffff;
     padding: 30px;
