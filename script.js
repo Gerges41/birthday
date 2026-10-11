@@ -3,7 +3,6 @@ function checkPassword() {
     const input = document.getElementById('password-input').value.trim();
     const errorMsg = document.getElementById('error-msg');
     
-    // تاريخ ميلادها
     const validPasswords = ["12/10/2003", "12\\10\\2003", "12-10-2003"];
 
     if (validPasswords.includes(input)) {
