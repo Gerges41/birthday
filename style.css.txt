@@ -1,0 +1,229 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    background-color: #0b0914;
+    color: #ffffff;
+    text-align: center;
+    overflow-x: hidden;
+}
+
+.hidden {
+    display: none !important;
+}
+
+.screen {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* شاشة كلمة السر */
+#login-screen {
+    background: linear-gradient(180deg, #180e29 0%, #080511 100%);
+}
+
+.login-card {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 121, 198, 0.3);
+    border-radius: 20px;
+    padding: 40px 20px;
+    max-width: 400px;
+    width: 100%;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    backdrop-filter: blur(10px);
+}
+
+.title-en {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.8rem;
+    color: #ffffff;
+}
+
+.name-en {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.5rem;
+    color: #ff79c6;
+    margin-bottom: 20px;
+}
+
+.pass-label {
+    font-size: 0.95rem;
+    margin-bottom: 15px;
+    color: #dddddd;
+}
+
+input[type="password"] {
+    width: 100%;
+    padding: 12px;
+    border-radius: 10px;
+    border: 1px solid #ff79c6;
+    background: rgba(0, 0, 0, 0.4);
+    color: #fff;
+    text-align: center;
+    font-size: 1.1rem;
+    outline: none;
+    margin-bottom: 15px;
+}
+
+.btn-pink {
+    background: linear-gradient(45deg, #ff79c6, #bd93f9);
+    border: none;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-pink:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 15px rgba(255, 121, 198, 0.6);
+}
+
+.error-text {
+    color: #ff5555;
+    font-size: 0.85rem;
+    margin-top: 10px;
+}
+
+.hint {
+    font-size: 0.75rem;
+    color: #888;
+    margin-top: 20px;
+}
+
+/* المحتوى الرئيسي */
+.hero-section {
+    padding: 60px 20px;
+}
+
+.glow {
+    text-shadow: 0 0 10px rgba(255, 121, 198, 0.5);
+}
+
+.hero-subtext {
+    font-size: 1.3rem;
+    margin-top: 10px;
+}
+
+.hero-quote-en {
+    font-size: 0.9rem;
+    color: #aaaaaa;
+    margin-top: 5px;
+    margin-bottom: 30px;
+}
+
+.cake-box {
+    font-size: 5rem;
+    margin: 20px 0;
+    animation: bounce 2s infinite;
+}
+
+@keyframes bounce {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+}
+
+/* الذكريات */
+.section {
+    width: 100%;
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.section-title {
+    font-size: 2rem;
+    color: #ff79c6;
+}
+
+.section-subtitle {
+    font-size: 0.9rem;
+    color: #888;
+    margin-bottom: 30px;
+}
+
+.memories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.memory-card {
+    background: #151128;
+    border-radius: 15px;
+    padding: 15px;
+    border: 1px solid rgba(255, 121, 198, 0.2);
+    transition: transform 0.3s;
+}
+
+.memory-card:hover {
+    transform: translateY(-5px);
+}
+
+.polaroid-photo img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.memory-date {
+    display: block;
+    margin-top: 12px;
+    color: #ff79c6;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.memory-desc {
+    font-size: 0.85rem;
+    color: #ddd;
+    margin-top: 5px;
+}
+
+/* الفيديو */
+.video-container video {
+    width: 100%;
+    max-width: 700px;
+    border-radius: 15px;
+    border: 2px solid #ff79c6;
+}
+
+/* الخطاب */
+.letter-card {
+    background: #fff5f8;
+    color: #333;
+    padding: 30px;
+    border-radius: 10px;
+    max-width: 500px;
+    margin: 0 auto;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    line-height: 1.8;
+}
+
+/* النهاية */
+.footer-section {
+    margin-top: 60px;
+    padding: 40px 20px;
+    background: linear-gradient(180deg, transparent 0%, #180e29 100%);
+    width: 100%;
+}
+
+.love-signature {
+    font-size: 2rem;
+    color: #ff79c6;
+    margin-top: 20px;
+}

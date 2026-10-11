@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Loly ♡</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- 1. شاشة الدخول بكلمة السر -->
+    <div id="login-screen" class="screen">
+        <div class="login-card">
+            <h1 class="title-en">Happy Birthday</h1>
+            <h2 class="name-en">Loly ♡</h2>
+            
+            <p class="pass-label">أدخلي كلمة السر للدخول إلى مفاجأتك</p>
+            <input type="password" id="password-input" placeholder="••••••••">
+            <button onclick="checkPassword()" class="btn-pink">فتح</button>
+            <p id="error-msg" class="error-text"></p>
+
+            <p class="hint">تلميح: تاريخ مميز جداً بالنسبة لكِ (DD/MM/YYYY أو DD\MM\YYYY)</p>
+        </div>
+    </div>
+
+    <!-- 2. المحتوى الرئيسي للموقع (يظهر بعد كلمة السر) -->
+    <div id="main-content" class="screen hidden">
+        
+        <!-- الهيدر -->
+        <header class="hero-section">
+            <h1 class="title-en glow">Happy Birthday</h1>
+            <h2 class="name-en glow">Loly ♡</h2>
+            <p class="hero-subtext">كل سنة وأنتِ أجمل حاجة في حياتي</p>
+            <p class="hero-quote-en">Another year of your beautiful soul and I'm so lucky to be part of it.</p>
+            <div class="cake-img-container">
+                <div class="cake-box">🎂</div>
+            </div>
+            <a href="#memories-section" class="btn-pink scroll-btn">اكتشفي مفاجأتك 👇</a>
+        </header>
+
+        <!-- قسم الذكريات -->
+        <section id="memories-section" class="section">
+            <h2 class="section-title">ذكرياتنا</h2>
+            <p class="section-subtitle">محطات صغيرة .. صنعت أجمل قصة ♡</p>
+
+            <div class="memories-grid">
+                <div class="memory-card">
+                    <div class="polaroid-photo">
+                        <img src="images/photo1.jpg" alt="ذكرة 1" onerror="this.src='https://via.placeholder.com/300x300/111122/ff79c6?text=حط+الصورة+هنا'">
+                    </div>
+                    <span class="memory-date">25/9/2026</span>
+                    <p class="memory-desc">أول مرة شفتها فيها في كارفور ♡</p>
+                </div>
+
+                <div class="memory-card">
+                    <div class="polaroid-photo">
+                        <img src="images/photo2.jpg" alt="ذكرة 2" onerror="this.src='https://via.placeholder.com/300x300/111122/ff79c6?text=حط+الصورة+هنا'">
+                    </div>
+                    <span class="memory-date">20/2/2026</span>
+                    <p class="memory-desc">أول مرة أقولها بحبك ♡</p>
+                </div>
+
+                <div class="memory-card">
+                    <div class="polaroid-photo">
+                        <img src="images/photo3.jpg" alt="ذكرة 3" onerror="this.src='https://via.placeholder.com/300x300/111122/ff79c6?text=حط+الصورة+هنا'">
+                    </div>
+                    <span class="memory-date">28/6/2026</span>
+                    <p class="memory-desc">أول دات مابينا وجبتلها وردة وكان مكسوفة ♡</p>
+                </div>
+
+                <div class="memory-card">
+                    <div class="polaroid-photo">
+                        <img src="images/photo4.jpg" alt="ذكرة 4" onerror="this.src='https://via.placeholder.com/300x300/111122/ff79c6?text=حط+الصورة+هنا'">
+                    </div>
+                    <span class="memory-date">4/7/2026</span>
+                    <p class="memory-desc">أول مرة قعدت مع ماماها قلتلها إني بحب بنتها ♡</p>
+                </div>
+
+                <div class="memory-card">
+                    <div class="polaroid-photo">
+                        <img src="images/photo5.jpg" alt="ذكرة 5" onerror="this.src='https://via.placeholder.com/300x300/111122/ff79c6?text=حط+الصورة+هنا'">
+                    </div>
+                    <span class="memory-date">5/7/2026</span>
+                    <p class="memory-desc">أول مرة خرجنا أنا ومامتها وهي في كارفور ♡</p>
+                </div>
+
+                <div class="memory-card">
+                    <div class="polaroid-photo">
+                        <img src="images/photo6.jpg" alt="ذكرة 6" onerror="this.src='https://via.placeholder.com/300x300/111122/ff79c6?text=حط+الصورة+هنا'">
+                    </div>
+                    <span class="memory-date">2/7/2026</span>
+                    <p class="memory-desc">أول مرة نتمشى وناكل أيس كريم ♡</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- قسم صور وفيديوهات -->
+        <section class="section">
+            <h2 class="section-title">صور وفيديوهات</h2>
+            <p class="section-subtitle">لحظاتك المفضلة .. دايماً معايا ♡</p>
+            
+            <div class="video-container">
+                <video controls poster="https://via.placeholder.com/800x450/111122/ff79c6?text=فيديو+ذكرياتنا">
+                    <source src="videos/our_video.mp4" type="video/mp4">
+                    متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+            </div>
+        </section>
+
+        <!-- قسم رسائل لك -->
+        <section class="section">
+            <h2 class="section-title">رسائل لك ♡</h2>
+            <p class="section-subtitle">كلمات من القلب .. لكل يوم</p>
+
+            <div class="letter-card">
+                <p class="letter-text">
+                    لولي ..<br><br>
+                    وجودك في حياتي أجمل نعمة.<br>
+                    كل لحظة معك بتخليني أكون نسخة أفضل من نفسي.<br>
+                    أنا بحبك .. وبحب كل تفاصيلك.<br>
+                    كل سنة وأنتِ بخير يا أجمل بنت في الدنيا. ♡<br><br>
+                    <strong>- جرجس</strong>
+                </p>
+            </div>
+        </section>
+
+        <!-- وفي النهاية -->
+        <footer class="footer-section">
+            <h2>وفي النهاية ..</h2>
+            <p>كل سنة وأنتِ بخير يا لولي ..</p>
+            <p>أتمنى لك حياة مليئة بالسعادة، وكل أحلامك تتحقق.</p>
+            <p>وجودك في حياتي هو أجمل هدية.</p>
+            <h3 class="love-signature">أحبك ♡</h3>
+            <p class="author-name">- جرجس</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
