@@ -92,6 +92,7 @@ function initMaze() {
 
 function drawMaze() {
     const canvas = document.getElementById('mazeCanvas');
+    if (!canvas) return;
     const ctx = canvas.getContext('2d');
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -168,8 +169,10 @@ function setupScratchCards() {
         function scratch(e) {
             if (!isScratching) return;
             const rect = canvas.getBoundingClientRect();
-            const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
-            const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+            const clientX = e.clientX || (e.touches && e.touches[0] ? e.touches[0].clientX : 0);
+            const clientY = e.clientY || (e.touches && e.touches[0] ? e.touches[0].clientY : 0);
+            const x = clientX - rect.left;
+            const y = clientY - rect.top;
 
             ctx.globalCompositeOperation = 'destination-out';
             ctx.beginPath();
@@ -177,12 +180,12 @@ function setupScratchCards() {
             ctx.fill();
         }
 
-        ['mousedown', 'touchstart'].forEach(evt => canvas.addEventListener(evt, (e) => { isScratching = true; scratch(e); }));
-        ['mousemove', 'touchmove'].forEach(evt => canvas.addEventListener(evt, scratch));
-        ['mouseup', 'mouseleave', 'touchend'].forEach(evt => canvas.addEventListener(evt, () => isScratching = false));
+        canvas.addEventListener('mousedown', (e) => { isScratching = true; scratch(e); });
+        canvas.addEventListener('mousemove', scratch);
+        window.addEventListener('mouseup', () => { isScratching = false; });
+
+        canvas.addEventListener('touchstart', (e) => { isScratching = true; scratch(e); }, {passive: true});
+        canvas.addEventListener('touchmove', scratch, {passive: true});
+        window.addEventListener('touchend', () => { isScratching = false; });
     }
 }
-
-window.onload = function() {
-    setupScratchCards();
-};
