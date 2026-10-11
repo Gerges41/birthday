@@ -27,7 +27,6 @@ body {
     z-index: 2;
 }
 
-/* زر الموسيقى */
 .music-btn {
     position: fixed;
     top: 15px;
@@ -43,7 +42,6 @@ body {
     box-shadow: 0 4px 10px rgba(0,0,0,0.1);
 }
 
-/* عناصر البلالين والزينة */
 .decorations {
     position: fixed;
     top: 0;
@@ -71,13 +69,12 @@ body {
     100% { transform: translateY(-10vh) rotate(20deg); opacity: 0; }
 }
 
-/* شاشة كلمة السر */
 #login-screen {
     background: linear-gradient(135deg, #ffdee9 0%, #b5fffc 100%);
 }
 
 .login-card {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 255, 255, 0.95);
     border: 3px dashed #ffb6c1;
     border-radius: 25px;
     padding: 35px 25px;
@@ -149,13 +146,6 @@ input[type="password"] {
     margin-top: 10px;
 }
 
-.hint {
-    font-size: 0.8rem;
-    color: #777;
-    margin-top: 15px;
-}
-
-/* القسم الرئيسي */
 .party-banner {
     background: #ffe4e1;
     color: #ff1493;
@@ -167,14 +157,14 @@ input[type="password"] {
 }
 
 .cake-box {
-    font-size: 6rem;
-    margin: 20px 0;
+    font-size: 5.5rem;
+    margin: 15px 0;
     animation: bounce 1.5s infinite alternate;
 }
 
 @keyframes bounce {
     from { transform: translateY(0); }
-    to { transform: translateY(-20px); }
+    to { transform: translateY(-15px); }
 }
 
 .section {
@@ -195,46 +185,63 @@ input[type="password"] {
     margin-bottom: 20px;
 }
 
-/* لعبة الحب */
+/* تنسيق لعبة المتاهة */
 .game-section {
-    background: rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.9);
     border-radius: 20px;
-    border: 2px dashed #ffb6c1;
+    border: 3px dashed #ffb6c1;
 }
 
-.game-container {
-    width: 100%;
-    height: 120px;
-    background: #fff;
-    border-radius: 15px;
-    position: relative;
+.maze-wrapper {
     display: flex;
+    justify-content: center;
+    margin: 15px 0;
+}
+
+#mazeCanvas {
+    background: #fff;
+    border: 4px solid #ff9a9e;
+    border-radius: 15px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.maze-controls {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    justify-content: space-between;
-    padding: 0 20px;
-    margin: 20px 0;
-    overflow: hidden;
-}
-
-.character {
-    font-size: 3.5rem;
-    transition: all 0.5s ease;
-}
-
-.love-hearts {
-    font-size: 2rem;
-    opacity: 0;
-    transition: opacity 0.5s;
-}
-
-.game-status-text {
-    font-size: 1rem;
-    color: #ff4081;
-    font-weight: bold;
+    gap: 5px;
     margin-top: 10px;
 }
 
-/* المجلد والقلاب (Flip Book) */
+.horizontal-ctrls {
+    display: flex;
+    gap: 20px;
+}
+
+.ctrl-btn {
+    width: 45px;
+    height: 45px;
+    font-size: 1.3rem;
+    border: none;
+    background: #fff0f5;
+    border: 2px solid #ffb6c1;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 3px 8px rgba(0,0,0,0.1);
+}
+
+.ctrl-btn:active {
+    transform: scale(0.9);
+}
+
+.game-status-text {
+    font-size: 1.05rem;
+    color: #ff4081;
+    font-weight: bold;
+    margin-top: 12px;
+}
+
+/* تنسيق بطاقات الخدش (Scratch Card) */
 .flip-book-container {
     position: relative;
     max-width: 450px;
@@ -252,7 +259,7 @@ input[type="password"] {
 
 .album-card.active-slide {
     display: block;
-    animation: fadeIn 0.5s ease;
+    animation: fadeIn 0.4s ease;
 }
 
 @keyframes fadeIn {
@@ -260,11 +267,31 @@ input[type="password"] {
     to { opacity: 1; transform: scale(1); }
 }
 
-.photo-frame img {
+.scratch-container {
+    position: relative;
     width: 100%;
-    height: 250px;
+    height: 260px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.hidden-img {
+    width: 100%;
+    height: 100%;
     object-fit: cover;
     border-radius: 15px;
+}
+
+.scratch-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 5;
+    touch-action: none;
 }
 
 .memory-date {
@@ -308,7 +335,6 @@ input[type="password"] {
     color: #777;
 }
 
-/* الفيديو والخطاب */
 .video-container video {
     width: 100%;
     max-width: 650px;
