@@ -2,12 +2,12 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Cairo', sans-serif;
+    font-family: 'Cairo', 'Fredoka', sans-serif;
 }
 
 body {
-    background-color: #0b0914;
-    color: #ffffff;
+    background: linear-gradient(135deg, #fff0f5 0%, #e6e6fa 50%, #e0ffff 100%);
+    color: #4a4a4a;
     text-align: center;
     overflow-x: hidden;
 }
@@ -23,207 +23,322 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+    position: relative;
+    z-index: 2;
+}
+
+/* زر الموسيقى */
+.music-btn {
+    position: fixed;
+    top: 15px;
+    left: 15px;
+    z-index: 100;
+    background: #ffffff;
+    border: 2px solid #ffb6c1;
+    padding: 8px 15px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ff69b4;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* عناصر البلالين والزينة */
+.decorations {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.balloon {
+    position: absolute;
+    font-size: 2.5rem;
+    animation: floatUp 8s infinite ease-in-out;
+}
+
+.balloon.red { left: 10%; animation-delay: 0s; }
+.balloon.yellow { left: 30%; animation-delay: 2s; }
+.balloon.blue { left: 50%; animation-delay: 4s; }
+.balloon.pink { left: 70%; animation-delay: 1s; }
+.balloon.green { left: 90%; animation-delay: 3s; }
+
+@keyframes floatUp {
+    0% { transform: translateY(100vh) rotate(0deg); opacity: 1; }
+    100% { transform: translateY(-10vh) rotate(20deg); opacity: 0; }
 }
 
 /* شاشة كلمة السر */
 #login-screen {
-    background: linear-gradient(180deg, #180e29 0%, #080511 100%);
+    background: linear-gradient(135deg, #ffdee9 0%, #b5fffc 100%);
 }
 
 .login-card {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 121, 198, 0.3);
-    border-radius: 20px;
-    padding: 40px 20px;
-    max-width: 400px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 3px dashed #ffb6c1;
+    border-radius: 25px;
+    padding: 35px 25px;
+    max-width: 420px;
     width: 100%;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(255, 182, 193, 0.4);
 }
 
 .title-en {
-    font-family: 'Dancing Script', cursive;
-    font-size: 2.8rem;
-    color: #ffffff;
+    font-family: 'Fredoka', cursive;
+    font-size: 2.5rem;
+    color: #ff6b8b;
 }
 
 .name-en {
-    font-family: 'Dancing Script', cursive;
-    font-size: 3.5rem;
-    color: #ff79c6;
-    margin-bottom: 20px;
+    font-family: 'Fredoka', cursive;
+    font-size: 3.2rem;
+    color: #9c27b0;
+    margin-bottom: 15px;
 }
 
 .pass-label {
-    font-size: 0.95rem;
+    font-size: 1rem;
     margin-bottom: 15px;
-    color: #dddddd;
+    color: #555;
 }
 
 input[type="password"] {
     width: 100%;
     padding: 12px;
-    border-radius: 10px;
-    border: 1px solid #ff79c6;
-    background: rgba(0, 0, 0, 0.4);
-    color: #fff;
+    border-radius: 15px;
+    border: 2px solid #ffb6c1;
+    background: #fff;
+    color: #333;
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     outline: none;
     margin-bottom: 15px;
 }
 
-.btn-pink {
-    background: linear-gradient(45deg, #ff79c6, #bd93f9);
+.btn-rainbow {
+    background: linear-gradient(45deg, #ff9a9e, #fecfef, #a1c4fd, #c2e9fb);
+    background-size: 200% 200%;
+    animation: rainbowGrad 4s ease infinite;
     border: none;
-    color: white;
-    padding: 12px 30px;
+    color: #4a4a4a;
+    padding: 12px 28px;
     border-radius: 25px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     cursor: pointer;
-    transition: transform 0.2s, box-shadow 0.2s;
-    text-decoration: none;
-    display: inline-block;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
 }
 
-.btn-pink:hover {
+.btn-rainbow:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 15px rgba(255, 121, 198, 0.6);
+}
+
+@keyframes rainbowGrad {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .error-text {
-    color: #ff5555;
-    font-size: 0.85rem;
+    color: #ff3366;
+    font-size: 0.9rem;
     margin-top: 10px;
 }
 
 .hint {
-    font-size: 0.75rem;
-    color: #888;
-    margin-top: 20px;
+    font-size: 0.8rem;
+    color: #777;
+    margin-top: 15px;
 }
 
-/* المحتوى الرئيسي */
-.hero-section {
-    padding: 60px 20px;
-}
-
-.glow {
-    text-shadow: 0 0 10px rgba(255, 121, 198, 0.5);
-}
-
-.hero-subtext {
-    font-size: 1.3rem;
-    margin-top: 10px;
-}
-
-.hero-quote-en {
-    font-size: 0.9rem;
-    color: #aaaaaa;
-    margin-top: 5px;
-    margin-bottom: 30px;
+/* القسم الرئيسي */
+.party-banner {
+    background: #ffe4e1;
+    color: #ff1493;
+    padding: 8px 20px;
+    border-radius: 20px;
+    display: inline-block;
+    font-weight: bold;
+    margin-bottom: 15px;
 }
 
 .cake-box {
-    font-size: 5rem;
+    font-size: 6rem;
     margin: 20px 0;
-    animation: bounce 2s infinite;
+    animation: bounce 1.5s infinite alternate;
 }
 
 @keyframes bounce {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-15px); }
+    from { transform: translateY(0); }
+    to { transform: translateY(-20px); }
 }
 
-/* الذكريات */
 .section {
     width: 100%;
-    max-width: 900px;
-    margin: 40px auto;
+    max-width: 800px;
+    margin: 30px auto;
     padding: 20px;
 }
 
 .section-title {
     font-size: 2rem;
-    color: #ff79c6;
+    color: #ff5252;
 }
 
 .section-subtitle {
-    font-size: 0.9rem;
-    color: #888;
-    margin-bottom: 30px;
+    font-size: 0.95rem;
+    color: #666;
+    margin-bottom: 20px;
 }
 
-.memories-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+/* لعبة الحب */
+.game-section {
+    background: rgba(255, 255, 255, 0.8);
+    border-radius: 20px;
+    border: 2px dashed #ffb6c1;
 }
 
-.memory-card {
-    background: #151128;
-    border-radius: 15px;
-    padding: 15px;
-    border: 1px solid rgba(255, 121, 198, 0.2);
-    transition: transform 0.3s;
-}
-
-.memory-card:hover {
-    transform: translateY(-5px);
-}
-
-.polaroid-photo img {
+.game-container {
     width: 100%;
-    height: 200px;
+    height: 120px;
+    background: #fff;
+    border-radius: 15px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    margin: 20px 0;
+    overflow: hidden;
+}
+
+.character {
+    font-size: 3.5rem;
+    transition: all 0.5s ease;
+}
+
+.love-hearts {
+    font-size: 2rem;
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+.game-status-text {
+    font-size: 1rem;
+    color: #ff4081;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+/* المجلد والقلاب (Flip Book) */
+.flip-book-container {
+    position: relative;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.album-card {
+    display: none;
+    background: #ffffff;
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+    border: 3px solid #ffd1dc;
+}
+
+.album-card.active-slide {
+    display: block;
+    animation: fadeIn 0.5s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+.photo-frame img {
+    width: 100%;
+    height: 250px;
     object-fit: cover;
-    border-radius: 10px;
+    border-radius: 15px;
 }
 
 .memory-date {
-    display: block;
-    margin-top: 12px;
-    color: #ff79c6;
+    display: inline-block;
+    background: #e1f5fe;
+    color: #0288d1;
+    padding: 4px 15px;
+    border-radius: 12px;
+    margin-top: 15px;
     font-weight: bold;
-    font-size: 0.9rem;
 }
 
 .memory-desc {
-    font-size: 0.85rem;
-    color: #ddd;
-    margin-top: 5px;
+    margin-top: 10px;
+    font-size: 1rem;
+    color: #444;
 }
 
-/* الفيديو */
+.flip-btn {
+    position: absolute;
+    top: 45%;
+    transform: translateY(-50%);
+    background: #ffffff;
+    border: 2px solid #ffb6c1;
+    color: #ff5252;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    z-index: 10;
+}
+
+.prev-btn { right: -15px; }
+.next-btn { left: -15px; }
+
+.slide-indicator {
+    margin-top: 15px;
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* الفيديو والخطاب */
 .video-container video {
     width: 100%;
-    max-width: 700px;
-    border-radius: 15px;
-    border: 2px solid #ff79c6;
+    max-width: 650px;
+    border-radius: 20px;
+    border: 4px solid #fff;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-/* الخطاب */
 .letter-card {
-    background: #fff5f8;
-    color: #333;
+    background: #ffffff;
+    color: #4a4a4a;
     padding: 30px;
-    border-radius: 10px;
-    max-width: 500px;
+    border-radius: 20px;
+    max-width: 450px;
     margin: 0 auto;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+    border: 2px dashed #a1c4fd;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
     line-height: 1.8;
 }
 
-/* النهاية */
 .footer-section {
-    margin-top: 60px;
+    margin-top: 50px;
     padding: 40px 20px;
-    background: linear-gradient(180deg, transparent 0%, #180e29 100%);
+    background: #fff;
     width: 100%;
+    border-radius: 30px 30px 0 0;
 }
 
 .love-signature {
-    font-size: 2rem;
-    color: #ff79c6;
-    margin-top: 20px;
+    font-size: 2.2rem;
+    color: #ff4081;
+    margin-top: 15px;
 }
