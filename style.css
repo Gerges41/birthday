@@ -169,8 +169,8 @@ input[type="password"] {
 
 .section {
     width: 100%;
-    max-width: 800px;
-    margin: 30px auto;
+    max-width: 700px;
+    margin: 50px auto;
     padding: 20px;
 }
 
@@ -182,10 +182,98 @@ input[type="password"] {
 .section-subtitle {
     font-size: 0.95rem;
     color: #666;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
 }
 
-/* تنسيق لعبة المتاهة */
+/* بوكسات الرسائل البيضاء الموزعة لإطالة الصفحة */
+.story-box {
+    background: #ffffff;
+    color: #444;
+    padding: 25px 30px;
+    border-radius: 20px;
+    max-width: 550px;
+    margin: 40px auto;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+    border: 2px dashed #ffb6c1;
+    line-height: 1.9;
+    font-size: 1.05rem;
+}
+
+/* قائمة الصور الطويلة بالخدش */
+.memories-long-list {
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+    align-items: center;
+}
+
+.memory-row {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    width: 100%;
+    max-width: 450px;
+    border: 3px solid #ffd1dc;
+}
+
+.scratch-container {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    border-radius: 15px;
+    overflow: hidden;
+    margin: 0 auto;
+}
+
+.hidden-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+}
+
+.scratch-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    z-index: 5;
+    touch-action: none;
+}
+
+.memory-info {
+    margin-top: 15px;
+    text-align: center;
+}
+
+.memory-date {
+    display: inline-block;
+    background: #e1f5fe;
+    color: #0288d1;
+    padding: 4px 15px;
+    border-radius: 12px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.memory-desc {
+    margin-top: 8px;
+    font-size: 1rem;
+    color: #444;
+}
+
+.eng-note {
+    margin-top: 6px;
+    font-size: 0.9rem;
+    color: #ff69b4;
+    font-weight: bold;
+    font-style: italic;
+}
+
+/* لعبة المتاهة */
 .game-section {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 20px;
@@ -241,98 +329,45 @@ input[type="password"] {
     margin-top: 12px;
 }
 
-/* تنسيق بطاقات الخدش (Scratch Card) */
-.flip-book-container {
-    position: relative;
-    max-width: 450px;
-    margin: 0 auto;
-}
-
-.album-card {
-    display: none;
+/* قسم الأهداف والتشيك ليست */
+.goals-card {
     background: #ffffff;
+    padding: 30px;
     border-radius: 20px;
-    padding: 20px;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.1);
-    border: 3px solid #ffd1dc;
-}
-
-.album-card.active-slide {
-    display: block;
-    animation: fadeIn 0.4s ease;
-}
-
-@keyframes fadeIn {
-    from { opacity: 0; transform: scale(0.95); }
-    to { opacity: 1; transform: scale(1); }
-}
-
-.scratch-container {
-    position: relative;
-    width: 100%;
-    height: 260px;
-    border-radius: 15px;
-    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border: 2px dashed #a1c4fd;
+    text-align: right;
+    max-width: 550px;
     margin: 0 auto;
 }
 
-.hidden-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 15px;
+.checklist {
+    list-style: none;
+    padding: 0;
 }
 
-.scratch-canvas {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-    z-index: 5;
-    touch-action: none;
-}
-
-.memory-date {
-    display: inline-block;
-    background: #e1f5fe;
-    color: #0288d1;
-    padding: 4px 15px;
-    border-radius: 12px;
-    margin-top: 15px;
-    font-weight: bold;
-}
-
-.memory-desc {
-    margin-top: 10px;
-    font-size: 1rem;
+.checklist li {
+    margin: 12px 0;
+    font-size: 1.05rem;
     color: #444;
+    display: flex;
+    align-items: center;
+    gap: 12px;
 }
 
-.flip-btn {
-    position: absolute;
-    top: 45%;
-    transform: translateY(-50%);
-    background: #ffffff;
-    border: 2px solid #ffb6c1;
-    color: #ff5252;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    font-size: 1.2rem;
+.checklist input[type="checkbox"] {
+    width: 20px;
+    height: 20px;
+    accent-color: #ff69b4;
     cursor: pointer;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-    z-index: 10;
 }
 
-.prev-btn { right: -15px; }
-.next-btn { left: -15px; }
-
-.slide-indicator {
-    margin-top: 15px;
-    font-size: 0.9rem;
-    color: #777;
+.goals-outro {
+    margin-top: 20px;
+    font-size: 0.95rem;
+    color: #666;
+    line-height: 1.8;
+    text-align: center;
 }
 
 .video-container video {
@@ -343,20 +378,8 @@ input[type="password"] {
     box-shadow: 0 8px 20px rgba(0,0,0,0.1);
 }
 
-.letter-card {
-    background: #ffffff;
-    color: #4a4a4a;
-    padding: 30px;
-    border-radius: 20px;
-    max-width: 450px;
-    margin: 0 auto;
-    border: 2px dashed #a1c4fd;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.05);
-    line-height: 1.8;
-}
-
 .footer-section {
-    margin-top: 50px;
+    margin-top: 60px;
     padding: 40px 20px;
     background: #fff;
     width: 100%;
@@ -364,7 +387,7 @@ input[type="password"] {
 }
 
 .love-signature {
-    font-size: 2.2rem;
+    font-size: 1.8rem;
     color: #ff4081;
     margin-top: 15px;
 }
