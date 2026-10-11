@@ -9,7 +9,7 @@
 </head>
 <body>
 
-    <!-- عناصر الزينة المتحركة (بلالين ونجوم) -->
+    <!-- عناصر الزينة والأنيميشن -->
     <div class="decorations">
         <span class="balloon red">🎈</span>
         <span class="balloon yellow">🎈</span>
@@ -21,15 +21,14 @@
         <span class="confetti c3">⭐</span>
     </div>
 
-    <!-- موسيقى الخلفية (تشغيل خفيف) -->
-    <audio id="bg-music" loop>
-        <source src="https://assets.mixkit.co/music/preview/mixkit-happy-birthday-to-you-442.mp3" type="audio/mp3">
+    <!-- صوت الخلفية -->
+    <audio id="bg-music" loop preload="auto">
+        <source src="https://cdn.pixabay.com/download/audio/2022/05/27/audio_1808fbf07a.mp3?filename=happy-birthday-114220.mp3" type="audio/mp3">
     </audio>
 
-    <!-- زر التحكم بالموسيقى -->
     <button id="music-toggle" class="music-btn" onclick="toggleMusic()">🎵 تشغيل الموسيقى</button>
 
-    <!-- 1. شاشة الدخول بكلمة السر -->
+    <!-- 1. شاشة الدخول -->
     <div id="login-screen" class="screen">
         <div class="login-card">
             <div class="header-decoration">🎉 🎂 🎁</div>
@@ -45,10 +44,9 @@
         </div>
     </div>
 
-    <!-- 2. المحتوى الرئيسي للموقع -->
+    <!-- 2. المحتوى الرئيسي -->
     <div id="main-content" class="screen hidden">
         
-        <!-- الهيدر والترحيب -->
         <header class="hero-section">
             <div class="party-banner">🎏 عيد ميلاد سعيد لولي 🎏</div>
             <h1 class="title-en bounce-anim">Happy Birthday</h1>
@@ -56,75 +54,94 @@
             <p class="hero-subtext">كل سنة وأنتِ أجمل وأحلى حاجة في الدنيا 🌸✨</p>
             
             <div class="cake-box">🎂</div>
-            <a href="#memories-section" class="btn-rainbow scroll-btn">شوف الذكريات والألعاب 👇</a>
+            <a href="#maze-section" class="btn-rainbow scroll-btn">يلا نلعب ونتفرج 👇</a>
         </header>
 
-        <!-- لعبة حب بسيطة: تقريب الشخصين من بعض -->
-        <section class="section game-section">
-            <h2 class="section-title">لعبة الحب الصغيورة 🎮❤️</h2>
-            <p class="section-subtitle">اضغطي على "قربي أكتر" علشان تجسدوا قربكم لبعض!</p>
+        <!-- لعبة المتاهة: ساعد جرجوسه يوصل لوليتها -->
+        <section id="maze-section" class="section game-section">
+            <h2 class="section-title">متاهة الحب 🧩❤️</h2>
+            <p class="section-subtitle">ساعدي جرجوسه 👦 يتخطى بابا 👨‍🦳، الفلوس 💸، وشراء البيت 🏠 عشان يوصل لوليتها 👧!</p>
 
-            <div class="game-container">
-                <div class="character left-char" id="boy">👦</div>
-                <div class="love-hearts" id="hearts-layer">💖</div>
-                <div class="character right-char" id="girl">👧</div>
+            <div class="maze-wrapper">
+                <canvas id="mazeCanvas" width="320" height="320"></canvas>
             </div>
 
-            <button id="step-btn" class="btn-rainbow" onclick="moveCloser()">قربي أكتر! 🥰</button>
-            <p id="game-status" class="game-status-text">اضغطي علشان تبدأوا تقربوا...</p>
+            <!-- أزرار التحكم بالمتاهة للموبايل -->
+            <div class="maze-controls">
+                <button class="ctrl-btn up" onclick="movePlayer(0, -1)">⬆️</button>
+                <div class="horizontal-ctrls">
+                    <button class="ctrl-btn left" onclick="movePlayer(-1, 0)">⬅️</button>
+                    <button class="ctrl-btn right" onclick="movePlayer(1, 0)">➡️</button>
+                </div>
+                <button class="ctrl-btn down" onclick="movePlayer(0, 1)">⬇️</button>
+            </div>
+
+            <p id="maze-status" class="game-status-text">استخدمي الأسهم أو الأزرار لتحريك جرجوسه!</p>
         </section>
 
-        <!-- قسم ذكرياتنا (مجلد وسلايدر يتقلب) -->
+        <!-- قسم الذكريات بالخدش (Scratch Cards) -->
         <section id="memories-section" class="section">
-            <h2 class="section-title">مجلد ذكرياتنا 📸📖</h2>
-            <p class="section-subtitle">قلبي في المجلد واسترجعي أجمل اللحظات ♡</p>
+            <h2 class="section-title">مجلد الذكريات المخبأة 📸✨</h2>
+            <p class="section-subtitle">اخربشي الضباب بأصبعك أو الماوس لإظهار الصورة وشوفي المفاجأة! ♡</p>
 
             <div class="flip-book-container">
                 <button class="flip-btn prev-btn" onclick="changeSlide(-1)">❮</button>
                 
+                <!-- صورة 1 -->
                 <div class="album-card active-slide">
-                    <div class="photo-frame">
-                        <img src="images/photo1.jpg" alt="ذكرة 1" onerror="this.src='https://via.placeholder.com/400x300/ffeaee/ff6b8b?text=صورة+1'">
+                    <div class="scratch-container" id="scratch-box-1">
+                        <canvas class="scratch-canvas" id="scratchCanvas1"></canvas>
+                        <img src="images/photo1.jpg" class="hidden-img" alt="ذكرة 1" onerror="this.src='https://via.placeholder.com/400x300/ffeaee/ff6b8b?text=أول+مرة+شفتها+في+كارفور'">
                     </div>
                     <span class="memory-date">25/9/2026</span>
                     <p class="memory-desc">أول مرة شفتها فيها في كارفور ♡</p>
                 </div>
 
+                <!-- صورة 2 -->
                 <div class="album-card">
-                    <div class="photo-frame">
-                        <img src="images/photo2.jpg" alt="ذكرة 2" onerror="this.src='https://via.placeholder.com/400x300/e3f2fd/1e88e5?text=صورة+2'">
+                    <div class="scratch-container" id="scratch-box-2">
+                        <canvas class="scratch-canvas" id="scratchCanvas2"></canvas>
+                        <img src="images/photo2.jpg" class="hidden-img" alt="ذكرة 2" onerror="this.src='https://via.placeholder.com/400x300/e3f2fd/1e88e5?text=أول+مرة+أقولها+بحبك'">
                     </div>
                     <span class="memory-date">20/2/2026</span>
                     <p class="memory-desc">أول مرة أقولها بحبك ♡</p>
                 </div>
 
+                <!-- صورة 3 -->
                 <div class="album-card">
-                    <div class="photo-frame">
-                        <img src="images/photo3.jpg" alt="ذكرة 3" onerror="this.src='https://via.placeholder.com/400x300/f3e5f5/8e24aa?text=صورة+3'">
+                    <div class="scratch-container" id="scratch-box-3">
+                        <canvas class="scratch-canvas" id="scratchCanvas3"></canvas>
+                        <img src="images/photo3.jpg" class="hidden-img" alt="ذكرة 3" onerror="this.src='https://via.placeholder.com/400x300/f3e5f5/8e24aa?text=أول+دات+مابينا+ووردة'">
                     </div>
                     <span class="memory-date">28/6/2026</span>
                     <p class="memory-desc">أول دات مابينا وجبتلها وردة وكانت مكسوفة ♡</p>
                 </div>
 
+                <!-- صورة 4 -->
                 <div class="album-card">
-                    <div class="photo-frame">
-                        <img src="images/photo4.jpg" alt="ذكرة 4" onerror="this.src='https://via.placeholder.com/400x300/e8f5e9/43a047?text=صورة+4'">
+                    <div class="scratch-container" id="scratch-box-4">
+                        <canvas class="scratch-canvas" id="scratchCanvas4"></canvas>
+                        <img src="images/photo4.jpg" class="hidden-img" alt="ذكرة 4" onerror="this.src='https://via.placeholder.com/400x300/e8f5e9/43a047?text=أول+مرة+مع+ماماها'">
                     </div>
                     <span class="memory-date">4/7/2026</span>
                     <p class="memory-desc">أول مرة قعدت مع ماماها قلتلها إني بحب بنتها ♡</p>
                 </div>
 
+                <!-- صورة 5 -->
                 <div class="album-card">
-                    <div class="photo-frame">
-                        <img src="images/photo5.jpg" alt="ذكرة 5" onerror="this.src='https://via.placeholder.com/400x300/fff8e1/fdd835?text=صورة+5'">
+                    <div class="scratch-container" id="scratch-box-5">
+                        <canvas class="scratch-canvas" id="scratchCanvas5"></canvas>
+                        <img src="images/photo5.jpg" class="hidden-img" alt="ذكرة 5" onerror="this.src='https://via.placeholder.com/400x300/fff8e1/fdd835?text=خروجة+كارفور+مع+ماماها'">
                     </div>
                     <span class="memory-date">5/7/2026</span>
                     <p class="memory-desc">أول مرة خرجنا أنا ومامتها وهي في كارفور ♡</p>
                 </div>
 
+                <!-- صورة 6 -->
                 <div class="album-card">
-                    <div class="photo-frame">
-                        <img src="images/photo6.jpg" alt="ذكرة 6" onerror="this.src='https://via.placeholder.com/400x300/ffe0b2/fb8c00?text=صورة+6'">
+                    <div class="scratch-container" id="scratch-box-6">
+                        <canvas class="scratch-canvas" id="scratchCanvas6"></canvas>
+                        <img src="images/photo6.jpg" class="hidden-img" alt="ذكرة 6" onerror="this.src='https://via.placeholder.com/400x300/ffe0b2/fb8c00?text=أيس+كريم+وتمشية'">
                     </div>
                     <span class="memory-date">2/7/2026</span>
                     <p class="memory-desc">أول مرة نتمشى وناكل أيس كريم ♡</p>
@@ -135,7 +152,7 @@
             <div class="slide-indicator" id="slide-num">صفحة 1 من 6</div>
         </section>
 
-        <!-- قسم صور وفيديوهات -->
+        <!-- فيديو الذكريات -->
         <section class="section">
             <h2 class="section-title">فيديو ذكرياتنا 🎬🎥</h2>
             <p class="section-subtitle">أجمل لحظاتنا سوا ♡</p>
@@ -148,26 +165,25 @@
             </div>
         </section>
 
-        <!-- قسم رسالة رقيقة -->
+        <!-- الرسالة -->
         <section class="section">
             <h2 class="section-title">رسالة خاصة لكِ 💌</h2>
             <div class="letter-card">
                 <p class="letter-text">
-                    لولي الاقموره ..<br><br>
-                    لووووليتشى هتفضلى اصغر كتكوته مهما تكبرى ✨<br>
-                    و هفضل احب كل حركاتك و اقلدها <br>
-                    و مش هبطل تريقه عليكى و اعاكس فيكى و انكوشك و اطلع عييينك .<br>
-                    كل سنة,,, كل سنة ايه؟؟ كل عمررك و انتى معايا. ♡<br><br>
-                    <strong>- جرجس بيه 🎈</strong>
+                    لولي الأمورة ..<br><br>
+                    وجودك في حياتي بيضيف ألوان وسعادة مبيخلصوش! ✨<br>
+                    كل يوم مع بعض بتكوني سبب إني ابتسم وأفرح.<br>
+                    أنا بحبك أوي وبحب كل تفاصيلك الرقيقة.<br>
+                    كل سنة وأنتِ بألف خير وصحة وسعادة يا أرق بنوتة. ♡<br><br>
+                    <strong>- جرجس 🎈</strong>
                 </p>
             </div>
         </section>
 
-        <!-- وفي النهاية -->
         <footer class="footer-section">
             <h2>وفي النهاية .. 🌟</h2>
-            <p>اتمنى اشوفك احسن دكتورة ديما فخور بيكى و هفضل فى ظهرك على طووول!</p>
-            <h3 class="love-signature">بحبك قد كده 🤏🏻 ♡</h3>
+            <p>أتمنى لك سنة كلها ألوان مبهجة وسعادة ملهاش حدود!</p>
+            <h3 class="love-signature">أحبك يا لولي ♡</h3>
             <p class="author-name">- جرجس</p>
         </footer>
     </div>
