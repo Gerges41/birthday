@@ -3,6 +3,7 @@ function checkPassword() {
     const input = document.getElementById('password-input').value.trim();
     const errorMsg = document.getElementById('error-msg');
     
+    // تاريخ ميلادها
     const validPasswords = ["12/10/2003", "12\\10\\2003", "12-10-2003"];
 
     if (validPasswords.includes(input)) {
@@ -14,7 +15,7 @@ function checkPassword() {
         initMaze();
         setupScratchCards();
     } else {
-        errorMsg.innerText = "كلمة السر مش صحيحة يا حلوة، جربي تاني! 🌸";
+        errorMsg.innerText = "تاريخ ميلادك مش مظبوط يا لولي، جربي تاني! 🌸";
     }
 }
 
@@ -41,7 +42,6 @@ function playAudio() {
         isPlaying = true;
         document.getElementById('music-toggle').innerText = "⏸️ إيقاف الموسيقى";
     }).catch(err => {
-        // نغمة أعياد ميلاد افتراضية بواسطة Web Audio API كبديل مضمؤن
         playBirthdaySynth();
         document.getElementById('music-toggle').innerText = "🎶 موسيقى تعمل";
     });
@@ -72,7 +72,7 @@ const mazeGrid = [
     [0, 3, 0, 1, 0, 0, 0, 0], // 3 = مصاريف وفلوس 💸
     [1, 1, 0, 1, 1, 1, 4, 1], // 4 = شقة وتجهيز بيت 🏠
     [0, 0, 0, 0, 0, 1, 0, 0],
-    [0, 1, 1, 1, 0, 0, 0, 5]  // 5 = لولي 👧 (الهدف)
+    [0, 1, 1, 1, 0, 0, 0, 5]  // 5 = لولي 👧
 ];
 
 let playerPos = { x: 0, y: 0 };
@@ -109,7 +109,6 @@ function drawMaze() {
                 ctx.fillRect(x, y, cellSize, cellSize);
             }
 
-            // العقبات والشخصيات
             ctx.font = "22px Cairo";
             ctx.textAlign = "center";
             ctx.textBaseline = "middle";
@@ -121,7 +120,6 @@ function drawMaze() {
         }
     }
 
-    // رسم جرجوسه
     ctx.font = "24px Cairo";
     ctx.fillText("👦", playerPos.x * cellSize + 20, playerPos.y * cellSize + 22);
 }
@@ -137,7 +135,6 @@ function movePlayer(dx, dy) {
             playerPos.y = newY;
             drawMaze();
 
-            // رسائل التحدي
             if (newY === 2 && newX === 5) status.innerText = "عديت موافقة بابا 👨‍🦳 بنجاح!";
             else if (newY === 4 && newX === 1) status.innerText = "تغلبت على المصاريف والفلوس 💸!";
             else if (newY === 5 && newX === 6) status.innerText = "جهّزت البيت وشقة العمر 🏠!";
@@ -149,9 +146,9 @@ function movePlayer(dx, dy) {
     }
 }
 
-// --- 4. تأثير خربشة الصور (Scratch Effect) ---
+// --- 4. تأثير خربشة الصور (12 صورة) ---
 function setupScratchCards() {
-    for (let i = 1; i <= 6; i++) {
+    for (let i = 1; i <= 12; i++) {
         const canvas = document.getElementById(`scratchCanvas${i}`);
         if (!canvas) continue;
 
@@ -159,14 +156,13 @@ function setupScratchCards() {
         canvas.width = canvas.offsetWidth || 350;
         canvas.height = canvas.offsetHeight || 250;
 
-        // طبقة الضباب الوردي مع النجوم
         ctx.fillStyle = '#ffc0cb';
         ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-        ctx.font = "20px Cairo";
+        ctx.font = "18px Cairo";
         ctx.fillStyle = "#ff1493";
         ctx.textAlign = "center";
-        ctx.fillText("✨ اخربشي الضباب هنا ✨", canvas.width / 2, canvas.height / 2);
+        ctx.fillText("✨ اخربشي الضباب بإيدك ✨", canvas.width / 2, canvas.height / 2);
 
         let isScratching = false;
 
@@ -188,15 +184,6 @@ function setupScratchCards() {
     }
 }
 
-// --- 5. تقليب المجلد ---
-let currentSlide = 0;
-const slides = document.querySelectorAll('.album-card');
-
-function changeSlide(direction) {
-    slides[currentSlide].classList.remove('active-slide');
-    currentSlide = (currentSlide + direction + slides.length) % slides.length;
-    slides[currentSlide].classList.add('active-slide');
-    
-    document.getElementById('slide-num').innerText = `صفحة ${currentSlide + 1} من ${slides.length}`;
+window.onload = function() {
     setupScratchCards();
-}
+};
